@@ -1,0 +1,28 @@
+database:
+  host: localhost
+  port: 3306
+  name: games
+server:
+  port: 8093
+
+spring:
+  application:
+    name: games-service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${database.host}:${database.port}/${database.name}
+    username: root
+    password: root
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

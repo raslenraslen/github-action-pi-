@@ -1,0 +1,25 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: API-Gateway
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/user/**,/api/auth/**,
+        - id: community-service
+          uri: lb://COMMUNITY-SERVICE
+          predicates:
+            - Path=/api/community/**
+        - id: games-service
+          uri: lb://GAMES-SERVICE
+          predicates:
+            - Path=/api/games/**,/api/packs/**,/api/reviews/**,/api/subscriptions/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
