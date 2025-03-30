@@ -3,11 +3,9 @@ name: CI/CD Pipeline
 on:
   push:
     branches: 
-   
       - "main"
   pull_request:
     branches: 
-      
       - "main"
 
 jobs:
@@ -24,8 +22,10 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn compile
+      working-directory: ./Services/user-service  # Specify the correct directory for Maven
     - name: Test with Maven
-      run: mvn test  
+      run: mvn test
+      working-directory: ./Services/user-service  # Specify the correct directory for Maven
 
   security-check:
     runs-on: ubuntu-latest
