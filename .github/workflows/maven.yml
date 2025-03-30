@@ -4,11 +4,11 @@ on:
   push:
     branches: 
    
-      - "backend/feature/user-service"
+      - "main"
   pull_request:
     branches: 
       
-      - "backend/feature/user-service"
+      - "main"
 
 jobs:
   compile:
